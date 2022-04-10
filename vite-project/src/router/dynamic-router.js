@@ -1,6 +1,6 @@
 // 所有的页面
 
-export const menu = [
+export const dynamicRouter = [
     {
         name: "首页",
         path: "/index",
