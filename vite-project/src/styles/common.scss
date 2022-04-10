@@ -1,0 +1,27 @@
+
+@import url("//at.alicdn.com/t/font_3315025_9c2rjuicj7.css");
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+div {
+  box-sizing: border-box;
+}
+.flex-center-center-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.flex-center-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mgBotton20 {
+  margin-bottom: 20px;
+}
+.mgBotton40 {
+  margin-bottom: 40px;
+}
