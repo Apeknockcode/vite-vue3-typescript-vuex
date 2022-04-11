@@ -2,11 +2,11 @@
 import { fetchPermission } from "../../apis/login"
 
 // 获取前端配置的路由配置
-import router, { DynameicRouter } from "../../router/index"
+import router, { DynameicRoutes } from "../../router/index"
 
 // 定义好全部的路由
 import { dynamicRouter } from "../../router/dynamic-router"
-
+console.log("dynamicRouter", dynamicRouter)
 // 引入比对方案
 import { recursionRouter, setDefaultRouter } from '../../utils/recursion-route'
 
@@ -41,21 +41,24 @@ export default {
             let permissionList = await fetchPermission()
             console.log('permissionList', permissionList)
             // 根据路由权限进行筛选
-            let routes = recursionRouter(permissionList, dynamicRouter)
-            let MainContainer = DynameicRouter.find(v => v, path === '')
+            let routes = recursionRouter(permissionList.data.menu, dynamicRouter)
+            console.log("routes", routes)
+          
+            let MainContainer = DynameicRoutes.find(v => v.path === '/')
+            console.log('MainContainer', MainContainer)
             let children = MainContainer.children
             children.push(...routes)
 
             // 生成 菜单
             commit('SET_MENU', children)
-            
+
             // 设置默认路由
             setDefaultRouter([MainContainer])
 
             // 初始化路由
             let initialRouter = router.options.routes
-            router.addRoute(DynameicRouter)
-            commit('SET_PERMISSION',[...initialRouter,...DynameicRouter])
+            router.addRoute(DynameicRoutes)
+            commit('SET_PERMISSION', [...initialRouter, ...DynameicRoutes])
 
 
         }

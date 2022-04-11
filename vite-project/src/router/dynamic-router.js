@@ -1,10 +1,17 @@
 // 所有的页面
 
+import Home from '../views/home/index.vue'
+import histogram from "../views/statistics/histogram.vue"
+import admin from "../views/account/admin.vue"
+import distribute from "../views/account/distribute.vue"
+import information from "../views/account/information.vue"
+
 export const dynamicRouter = [
     {
         name: "首页",
         path: "/index",
         icon: "",
+        component: Home,
         meta: {
             name: "首页",
             icon: "",
@@ -22,7 +29,8 @@ export const dynamicRouter = [
             {
                 name: "柱状图",
                 icon: "",
-                path: "/account/histogram",
+                path: "/statistics/histogram",
+                component: histogram,
                 meta: {
                     name: "柱状图",
                     icon: "",
@@ -43,6 +51,7 @@ export const dynamicRouter = [
                 name: "管理员列表",
                 icon: "",
                 path: "/account/admin",
+                component: admin,
                 meta: {
                     name: "管理员列表",
                     icon: "",
@@ -52,6 +61,7 @@ export const dynamicRouter = [
                 name: "分配管理",
                 icon: "",
                 path: "/account/distribute",
+                component: distribute,
                 meta: {
                     name: "分配管理",
                     icon: "",
@@ -61,6 +71,7 @@ export const dynamicRouter = [
                 name: "账号信息",
                 icon: "",
                 path: "/account/information",
+                component: information,
                 meta: {
                     name: "账号信息",
                     icon: "",
