@@ -58,7 +58,7 @@ export default {
             console.log('initialRouter', initialRouter)
             console.log('DynameicRoutes', DynameicRoutes)
 
-            router.addRoute('DynameicRoutes',DynameicRoutes)
+            router.addRoute(DynameicRoutes)
             console.log('router',router)
 
             commit('SET_PERMISSION', [...initialRouter, ...DynameicRoutes])
