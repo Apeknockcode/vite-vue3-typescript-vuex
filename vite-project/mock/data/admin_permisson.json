@@ -3,22 +3,15 @@
     "message": "登陆成功",
     "data": {
         "menu": [
-            {
-                "name": "首页",
-                "path": "/index",
-                "icon": "",
-                "meta": {
-                    "name": "首页",
-                    "icon": ""
-                }
-            },
+          
             {
                 "name": "统计",
                 "path": "/statistics",
                 "icon": "",
                 "meta": {
                     "name": "统计",
-                    "icon": ""
+                    "icon": "",
+                    "layout": "nodefault"
                 },
                 "children": [
                     {
@@ -27,45 +20,50 @@
                         "path": "/account/histogram",
                         "meta": {
                             "name": "柱状图",
-                            "icon": ""
+                            "icon": "",
+                            "layout": "nodefault"
                         }
                     }
                 ]
             },
             {
-                "name": "账号管理",
+                "name": "账户",
                 "path": "/account",
                 "icon": "",
                 "meta": {
-                    "name": "账号管理",
-                    "icon": ""
+                    "name": "账户",
+                    "icon": "",
+                    "layout": "nodefault"
                 },
                 "children": [
                     {
-                        "name": "管理员列表",
+                        "name": "管理员",
                         "icon": "",
                         "path": "/account/admin",
                         "meta": {
-                            "name": "管理员列表",
-                            "icon": ""
+                            "name": "管理员",
+                            "icon": "",
+                            "layout": "nodefault"
                         }
                     },
                     {
-                        "name": "分配管理",
+                        "name": "分配列表",
                         "icon": "",
                         "path": "/account/distribute",
                         "meta": {
-                            "name": "分配管理",
-                            "icon": ""
+                            "name": "分配列表",
+                            "icon": "",
+                            "layout": "nodefault"
                         }
                     },
                     {
-                        "name": "账号信息",
+                        "name": "账户信息",
                         "icon": "",
                         "path": "/account/information",
                         "meta": {
-                            "name": "账号信息",
-                            "icon": ""
+                            "name": "账户信息",
+                            "icon": "",
+                            "layout": "nodefault"
                         }
                     }
                 ]

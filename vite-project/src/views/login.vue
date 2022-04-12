@@ -37,12 +37,8 @@ export default defineComponent({
     }
     const disabled = computed(() => {
       return !(formState.username && formState.password)
-      // return false
     })
-    const handleLogin = () => {
-      console.log('登陆')
-      router.push('/index')
-    }
+
     // 忘记密码
     const handleForgetPws = () => {
       router.push({
@@ -54,7 +50,6 @@ export default defineComponent({
       onFinish,
       onFinishFailed,
       disabled,
-      handleLogin,
       handleForgetPws,
     }
   },

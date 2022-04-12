@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -11,7 +11,9 @@
     "@vitejs/plugin-legacy": "^1.7.1",
     "ant-design-vue": "^2.2.8",
     "axios": "^0.26.1",
+    "node-sass": "^4.0.0",
     "route": "^0.2.5",
+    "sass": "^1.50.0",
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.3",
     "vite-plugin-compression": "^0.5.1",

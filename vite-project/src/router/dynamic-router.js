@@ -1,82 +1,78 @@
 // 所有的页面
 
-import Home from '../views/home/index.vue'
-import histogram from "../views/statistics/histogram.vue"
-import admin from "../views/account/admin.vue"
-import distribute from "../views/account/distribute.vue"
-import information from "../views/account/information.vue"
 
-export const dynamicRouter = [
+const statistics = () => import('../views/statistics/index.vue')
+const histogram = () => import('../views/statistics/histogram.vue')
+const account = () => import('../views/account/index.vue')
+const admin = () => import('../views/account/admin.vue')
+const distribute = () => import('../views/account/distribute.vue')
+const information = () => import('../views/account/information.vue')
+const dynameicRoutes = [
     {
-        name: "首页",
-        path: "/index",
-        icon: "",
-        component: Home,
-        meta: {
-            name: "首页",
-            icon: "",
-        },
-    },
-    {
+        path: '/statistics',
+        component: statistics,
         name: "统计",
-        path: "/statistics",
-        icon: "",
         meta: {
-            name: "统计",
-            icon: "",
+            name: '统计',
+            icon: '',
+            layout: 'nodefault'
         },
         children: [
             {
-                name: "柱状图",
-                icon: "",
-                path: "/statistics/histogram",
+                path: '/histogram',
                 component: histogram,
+                name: "柱状图",
                 meta: {
-                    name: "柱状图",
-                    icon: "",
+                    name: '柱状图',
+                    icon: '',
+                    layout: 'nodefault'
                 },
-            },
-        ],
+            }
+        ]
     },
     {
-        name: "账号管理",
-        path: "/account",
-        icon: "",
+        path: '/account',
+        component: account,
+        name: "账户",
         meta: {
-            name: "账号管理",
-            icon: "",
+            name: '账户',
+            icon: '',
+            layout: 'nodefault'
         },
         children: [
             {
-                name: "管理员列表",
-                icon: "",
-                path: "/account/admin",
+                path: '/admin',
                 component: admin,
+                name: "管理员",
                 meta: {
-                    name: "管理员列表",
-                    icon: "",
+                    name: '管理员',
+                    icon: '',
+                    layout: 'nodefault'
                 },
             },
             {
-                name: "分配管理",
-                icon: "",
-                path: "/account/distribute",
+                path: '/distribute',
                 component: distribute,
+                name: "分配列表",
                 meta: {
-                    name: "分配管理",
-                    icon: "",
+                    name: '分配列表',
+                    icon: '',
+                    layout: 'nodefault'
                 },
             },
             {
-                name: "账号信息",
-                icon: "",
-                path: "/account/information",
+                path: '/information',
                 component: information,
+                name: "账户信息",
                 meta: {
-                    name: "账号信息",
-                    icon: "",
+                    name: '账户信息',
+                    icon: '',
+                    layout: 'nodefault'
                 },
-            },
-        ],
-    },
+            }
+        ]
+    }
 ];
+export default dynameicRoutes
+
+ 

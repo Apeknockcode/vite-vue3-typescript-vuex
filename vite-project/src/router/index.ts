@@ -1,10 +1,24 @@
 import {
   createRouter,
-  createWebHashHistory,
   createWebHistory,
   RouteRecordRaw,
 } from 'vue-router'
 
+
+// 基本配置路由
+const Login = () => import('../views/login.vue')
+
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+  },
+]
+
+const Home = () => import('../views/home/index.vue')
+const Forbidden = () => import('../views/404.vue')
+const forgetpws = () => import('../views/forgetpws.vue')
 /**
  *  根据用户的权限不同，所能看到的页面和操作性不同
  * admin -> 所有页面
@@ -13,28 +27,21 @@ import {
  *
  * 通过 addRouter() 的方式来动态的添加路由
  * */
-import index from '../views/home/index.vue'
-import Forbidden from '../views/404.vue'
-import Login from '../views/login.vue'
-
 export const DynameicRoutes = [
   {
-    path: '/',
+    path: '',
     name: 'container',
-    redirect: 'index',
+    component: Home,
+    redirect: '/index',
     meta: {
       requireAuth: true,
       name: '首页',
-      layout: 'nodefault',
     },
     children: [
       {
-        path: 'index',
-        component: index,
-        name: 'home',
+        path: '/index',
+        name: '首页',
         meta: {
-          // 匹配规则
-          requireAuth: true,
           name: '首页',
           icon: '',
           layout: 'nodefault',
@@ -43,39 +50,19 @@ export const DynameicRoutes = [
     ],
   },
   {
-    path: '/404',
-    name: '404',
-    meta: {
-      title: '404',
-      icon: '',
-      layout: 'default',
-    },
+    path: '/forgetpws',
+    name: '忘记密码',
+    component: forgetpws,
+  },
+  {
+    path: '/403',
+    name: '找不到页面',
     component: Forbidden,
   },
   {
     path: '/:pathMatch(.*)',
-    //访问主页的时候 重定向到index页面
-    name: '404',
-    meta: {
-      title: '404',
-      icon: '',
-      layout: 'default',
-    },
+    name: '找不到页面',
     component: Forbidden,
-  },
-]
-
-// 初始化路由
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/login',
-    name: '登陆',
-    component: Login,
-    meta: {
-      title: '登陆',
-      icon: '',
-      layout: 'default',
-    },
   },
 ]
 
