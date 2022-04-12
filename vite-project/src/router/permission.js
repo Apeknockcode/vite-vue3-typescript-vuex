@@ -3,6 +3,7 @@ import router from './index'
 import store from '@/store/index'
 
 router.beforeEach((to, from, next) => {
+    debugger
     if (!store.state.UserToken) {
         // 未登陆
         if (to.matched.length > 0 && !to.matched.some(record => record.meta.requireAuth)) {
