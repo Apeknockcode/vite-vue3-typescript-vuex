@@ -43,7 +43,7 @@ export default {
             // 根据路由权限进行筛选
             let routes = recursionRouter(permissionList.data.menu, dynameicRoutes)
             console.log('根据路由权限进行筛选 ', routes)
-            let MainContainer = DynameicRoutes.find(v => v.path === '/')
+            let MainContainer = DynameicRoutes.find(v => v.path === '')
             console.log('容器路由 ', MainContainer)
             let children = MainContainer.children
             console.log('获取容器路由下面的children', children)
@@ -59,7 +59,7 @@ export default {
             console.log('DynameicRoutes', DynameicRoutes)
 
             router.addRoute(DynameicRoutes)
-            console.log('router',router)
+            console.log('router', router.options.routes)
 
             commit('SET_PERMISSION', [...initialRouter, ...DynameicRoutes])
 

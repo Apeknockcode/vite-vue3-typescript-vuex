@@ -6,7 +6,8 @@ import {
 
 
 // 基本配置路由
-import Login from '../views/login.vue'
+const Login = () => import('../views/login.vue')
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
@@ -15,9 +16,9 @@ const routes: Array<RouteRecordRaw> = [
   },
 ]
 
-import Home from '../views/home/index.vue'
-import Forbidden from '../views/404.vue'
-import forgetpws from '../views/forgetpws.vue'
+const Home = () => import('../views/home/index.vue')
+const Forbidden = () => import('../views/404.vue')
+const forgetpws = () => import('../views/forgetpws.vue')
 /**
  *  根据用户的权限不同，所能看到的页面和操作性不同
  * admin -> 所有页面
@@ -28,7 +29,7 @@ import forgetpws from '../views/forgetpws.vue'
  * */
 export const DynameicRoutes = [
   {
-    path: '/',
+    path: '',
     name: 'container',
     component: Home,
     redirect: '/index',
