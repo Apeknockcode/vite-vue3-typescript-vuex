@@ -10,7 +10,7 @@ import Login from '../views/login.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
-    name: 'login',
+    name: 'Login',
     component: Login,
   },
 ]
