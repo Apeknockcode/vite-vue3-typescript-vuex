@@ -2,7 +2,6 @@
 import {useRouter, useRoute} from 'vue-router'
 import {defineComponent, reactive, computed, getCurrentInstance} from 'vue'
 import {UserOutlined, LockOutlined} from '@ant-design/icons-vue'
-import {any} from 'vue-types'
 interface FormState {
   username: string
   password: string
@@ -28,7 +27,7 @@ export default defineComponent({
 
       vue.proxy.$http.login.login(values.username).then((res: any) => {
         vue.proxy.$store.commit('LOGIN_IN', res.data.token)
-        router.push('/index')
+        router.push('/home')
       })
     }
 
@@ -41,8 +40,8 @@ export default defineComponent({
 
     // 忘记密码
     const handleForgetPws = () => {
-      router.push({
-        path: '/forgetpassword',
+      router.replace({
+        path: '/forgetpws',
       })
     }
     return {

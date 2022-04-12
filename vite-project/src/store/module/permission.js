@@ -3,7 +3,7 @@ import { fetchPermission } from "../../apis/login"
  
 // 获取前端配置的路由配置  DynameicRoutes 这是根路由
 import router, { DynameicRoutes } from "../../router/index"
-console.log('store', router)
+
 
 // 定义好全部的路由
 import dynameicRoutes from "../../router/dynamic-router"
@@ -59,8 +59,7 @@ export default {
             console.log('DynameicRoutes', DynameicRoutes)
 
             router.addRoute(DynameicRoutes)
-            console.log('router', router.options.routes)
-
+            console.log('router', DynameicRoutes)
             commit('SET_PERMISSION', [...initialRouter, ...DynameicRoutes])
 
 

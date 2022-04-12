@@ -11,8 +11,6 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const layout = computed(() => {
-      let router = route.meta
-      // return 'layout-' + (router?.layout || 'default').toLowerCase()
       return 'layout-default'.toLowerCase()
     })
     return {

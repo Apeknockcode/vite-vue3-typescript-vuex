@@ -88,12 +88,12 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
           },
         },
       },
-      terserOptions: {
-        compress: {
-          drop_console: true,
-          drop_debugger: true,
-        },
-      },
+      // terserOptions: {
+      //   compress: {
+      //     drop_console: true,
+      //     drop_debugger: true,
+      //   },
+      // },
     },
     server: {
       open: true,

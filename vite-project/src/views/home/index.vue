@@ -1,19 +1,13 @@
-<template>
-    <div>
-        首页
-    </div>
-</template>
+<template>首页</template>
 
-<script>
-export default {
-    setup () {
-        
+<script lang="ts">
+import {defineComponent} from 'vue'
 
-        return {}
-    }
-}
+export default defineComponent({
+  setup() {
+    return {}
+  },
+})
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style scoped></style>

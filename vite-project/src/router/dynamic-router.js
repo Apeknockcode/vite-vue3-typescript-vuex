@@ -11,21 +11,21 @@ const dynameicRoutes = [
     {
         path: '/statistics',
         component: statistics,
-        name: "统计",
+        name: "statistics",
         meta: {
             name: '统计',
             icon: '',
-            layout: 'nodefault'
+
         },
         children: [
             {
                 path: '/histogram',
                 component: histogram,
-                name: "柱状图",
+                name: "histogram",
                 meta: {
                     name: '柱状图',
                     icon: '',
-                    layout: 'nodefault'
+
                 },
             }
         ]
@@ -33,41 +33,41 @@ const dynameicRoutes = [
     {
         path: '/account',
         component: account,
-        name: "账户",
+        name: "account",
         meta: {
             name: '账户',
             icon: '',
-            layout: 'nodefault'
+
         },
         children: [
             {
                 path: '/admin',
                 component: admin,
-                name: "管理员",
+                name: "admin",
                 meta: {
                     name: '管理员',
                     icon: '',
-                    layout: 'nodefault'
+
                 },
             },
             {
                 path: '/distribute',
                 component: distribute,
-                name: "分配列表",
+                name: "distribute",
                 meta: {
                     name: '分配列表',
                     icon: '',
-                    layout: 'nodefault'
+
                 },
             },
             {
                 path: '/information',
                 component: information,
-                name: "账户信息",
+                name: "information",
                 meta: {
                     name: '账户信息',
                     icon: '',
-                    layout: 'nodefault'
+
                 },
             }
         ]
@@ -75,4 +75,3 @@ const dynameicRoutes = [
 ];
 export default dynameicRoutes
 
- 

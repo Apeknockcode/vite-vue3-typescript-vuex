@@ -3,68 +3,25 @@
     "message": "登陆成功",
     "data": {
         "menu": [
-          
             {
                 "name": "统计",
-                "path": "/statistics",
-                "icon": "",
-                "meta": {
-                    "name": "统计",
-                    "icon": "",
-                    "layout": "nodefault"
-                },
                 "children": [
                     {
-                        "name": "柱状图",
-                        "icon": "",
-                        "path": "/account/histogram",
-                        "meta": {
-                            "name": "柱状图",
-                            "icon": "",
-                            "layout": "nodefault"
-                        }
+                        "name": "柱状图"
                     }
                 ]
             },
             {
                 "name": "账户",
-                "path": "/account",
-                "icon": "",
-                "meta": {
-                    "name": "账户",
-                    "icon": "",
-                    "layout": "nodefault"
-                },
                 "children": [
                     {
-                        "name": "管理员",
-                        "icon": "",
-                        "path": "/account/admin",
-                        "meta": {
-                            "name": "管理员",
-                            "icon": "",
-                            "layout": "nodefault"
-                        }
+                        "name": "管理员"
                     },
                     {
-                        "name": "分配列表",
-                        "icon": "",
-                        "path": "/account/distribute",
-                        "meta": {
-                            "name": "分配列表",
-                            "icon": "",
-                            "layout": "nodefault"
-                        }
+                        "name": "分配列表"
                     },
                     {
-                        "name": "账户信息",
-                        "icon": "",
-                        "path": "/account/information",
-                        "meta": {
-                            "name": "账户信息",
-                            "icon": "",
-                            "layout": "nodefault"
-                        }
+                        "name": "账户信息"
                     }
                 ]
             }

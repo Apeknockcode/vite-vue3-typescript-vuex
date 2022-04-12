@@ -1,30 +1,19 @@
 <!-- 侧边栏 -->
 <template>
-  <div class="sidebar">
-    <a-layout-sider>
-      <div class="title">Systerm</div>
-      <div>{{ menuList }}</div>
-    </a-layout-sider>
-  </div>
+  <a-layout-sider class="sidebar">
+    <div class="title">Systerm</div>
+  </a-layout-sider>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed, toRefs } from "vue";
-import { menu } from "../plugins/menu";
+import {defineComponent, reactive, computed, toRefs} from 'vue'
 
 export default defineComponent({
   setup() {
-    const date = reactive({
-      menuList: menu,
-    });
-    console.log(date);
-    console.log(toRefs(date));
-    return toRefs(date);
+    return {}
   },
-});
+})
 </script>
-
-
 
 <style lang="scss" scoped>
 .sidebar {
