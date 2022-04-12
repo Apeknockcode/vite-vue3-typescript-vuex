@@ -1,8 +1,8 @@
 // 权限处理的方式
-import route from './index'
+import router from './index'
 import store from '@/store/index'
 
-route.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
     if (!store.state.UserToken) {
         // 未登陆
         if (to.matched.length > 0 && !to.matched.some(record => record.meta.requireAuth)) {
@@ -15,7 +15,7 @@ route.beforeEach((to, from, next) => {
         }
     } else {
         // 用户已经登陆了 ，则需要判断用户的路由访问权限
-        if (!store.state.permissionList) {
+        if (!store.state.permission.permissionList) {
             store.dispatch("permission/FETCH_PERMISSION").then(() => {
                 next({
                     path: to.path
@@ -28,5 +28,6 @@ route.beforeEach((to, from, next) => {
                 next(to.fullPath)
             }
         }
+        // next()
     }
 })

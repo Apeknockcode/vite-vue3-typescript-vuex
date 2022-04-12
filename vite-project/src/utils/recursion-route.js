@@ -11,13 +11,12 @@
  * @return  {Array}  realRouter  全部过滤之后符合条件的路由
  * */
 export function recursionRouter(router = [], allRouter = []) {
-    var realRouter = []
+    let realRouter = []
     allRouter.forEach((v, i) => {
         router.forEach((item, index) => {
             if (item.name == v.meta.name) {
                 if (item.children && item.children.length > 0) {
                     v.children = recursionRouter(item.children, v.children)
-
                 }
                 realRouter.push(v)
             }
@@ -30,6 +29,7 @@ export function recursionRouter(router = [], allRouter = []) {
 export function setDefaultRouter(routers) {
     routers.forEach((v, i) => {
         if (v.children && v.children.length > 0) {
+            // 指定path
             v.redirect = { name: v.children[0].name }
             setDefaultRouter(v.children)
         }

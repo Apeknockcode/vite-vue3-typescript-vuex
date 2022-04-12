@@ -1,11 +1,12 @@
 // 获取后台的权限数据
 import { fetchPermission } from "../../apis/login"
-
-// 获取前端配置的路由配置
-import router, { DynameicRouter } from "../../router/index"
+ 
+// 获取前端配置的路由配置  DynameicRoutes 这是根路由
+import router, { DynameicRoutes } from "../../router/index"
+console.log('store', router)
 
 // 定义好全部的路由
-import { dynamicRouter } from "../../router/dynamic-router"
+import dynameicRoutes from "../../router/dynamic-router"
 
 // 引入比对方案
 import { recursionRouter, setDefaultRouter } from '../../utils/recursion-route'
@@ -15,7 +16,7 @@ export default {
     state: {
         permissionList: null,
         sidebarMenu: [],// 导航菜单
-        currentMenu: [],// 当前菜单
+        currentMenu: '',// 当前菜单
     },
     getters: {},
     mutations: {
@@ -39,23 +40,28 @@ export default {
     actions: {
         async FETCH_PERMISSION({ commit, state }) {
             let permissionList = await fetchPermission()
-            console.log('permissionList', permissionList)
             // 根据路由权限进行筛选
-            let routes = recursionRouter(permissionList, dynamicRouter)
-            let MainContainer = DynameicRouter.find(v => v, path === '')
+            let routes = recursionRouter(permissionList.data.menu, dynameicRoutes)
+            console.log('根据路由权限进行筛选 ', routes)
+            let MainContainer = DynameicRoutes.find(v => v.path === '/')
+            console.log('容器路由 ', MainContainer)
             let children = MainContainer.children
+            console.log('获取容器路由下面的children', children)
             children.push(...routes)
-
             // 生成 菜单
             commit('SET_MENU', children)
-            
             // 设置默认路由
             setDefaultRouter([MainContainer])
-
             // 初始化路由
             let initialRouter = router.options.routes
-            router.addRoute(DynameicRouter)
-            commit('SET_PERMISSION',[...initialRouter,...DynameicRouter])
+
+            console.log('initialRouter', initialRouter)
+            console.log('DynameicRoutes', DynameicRoutes)
+
+            router.addRoute('DynameicRoutes',DynameicRoutes)
+            console.log('router',router)
+
+            commit('SET_PERMISSION', [...initialRouter, ...DynameicRoutes])
 
 
         }
