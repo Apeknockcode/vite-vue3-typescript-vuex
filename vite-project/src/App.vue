@@ -1,7 +1,9 @@
+
 <template>
-  <component :is="layout">
-    <router-view />
-  </component>
+  <!-- <component :is="layout">
+    
+  </component> -->
+  <router-view />
 </template>
 
 <script lang="ts">
@@ -11,6 +13,10 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const layout = computed(() => {
+      let router = route.meta
+      console.log('router',route)
+    
+      // return 'layout-' + (router?.Layout || 'empty').toLowerCase()
       return 'layout-default'.toLowerCase()
     })
     return {

@@ -3,7 +3,6 @@ import router from './index'
 import store from '@/store/index'
 
 router.beforeEach((to, from, next) => {
-    debugger
     if (!store.state.UserToken) {
         // 未登陆
         if (to.matched.length > 0 && !to.matched.some(record => record.meta.requireAuth)) {
@@ -15,6 +14,7 @@ router.beforeEach((to, from, next) => {
             })
         }
     } else {
+
         // 用户已经登陆了 ，则需要判断用户的路由访问权限
         if (!store.state.permission.permissionList) {
             store.dispatch("permission/FETCH_PERMISSION").then(() => {

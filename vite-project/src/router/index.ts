@@ -1,8 +1,10 @@
+
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
+
 
 // 基本配置路由
 const Login = () => import('../views/login.vue')
-const Layout = () => import ('../layouts/Default.vue')
+const Layout = () => import('../layouts/Default.vue')
 const Home = () => import('../views/home/index.vue')
 const Forbidden = () => import('../views/404.vue')
 const forgetpws = () => import('../views/forgetpws.vue')
@@ -10,15 +12,22 @@ const forgetpws = () => import('../views/forgetpws.vue')
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
+    // redirect: 'login',
     component: Login,
-  },
-  {
-    path: '/forgetpws',
-    component: forgetpws,
+    // children: [
+    //   {
+    //     path: 'login',
+    //     component: Login,
+    //     name: 'login',
+    //     meta: {
+    //       name: '登陆',
+    //       icon: '',
+    //     },
+    //   },
+    // ],
   },
 ]
-
 
 /**
  *  根据用户的权限不同，所能看到的页面和操作性不同
@@ -33,14 +42,14 @@ export const DynameicRoutes = [
     path: '',
     name: 'container',
     component: Layout,
-    redirect: '/home',
+    redirect: 'home',
     meta: {
       requireAuth: true,
       name: '首页',
     },
     children: [
       {
-        path: '/home',
+        path: 'home',
         component: Home,
         name: 'home',
         meta: {
@@ -50,7 +59,10 @@ export const DynameicRoutes = [
       },
     ],
   },
-  
+  {
+    path: '/forgetpws',
+    component: forgetpws,
+  },
   {
     path: '/403',
     component: Forbidden,
@@ -65,6 +77,8 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 })
+
+
 
 // 路由拦截
 

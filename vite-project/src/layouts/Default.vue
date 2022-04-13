@@ -4,7 +4,7 @@
     <a-layout>
       <sidebar-Header />
       <a-layout-content class="sidebarContent">
-        <!-- <router-view /> -->
+        <router-view />
       </a-layout-content>
       <sidebar-Footer />
     </a-layout>

@@ -1,6 +1,6 @@
 // 获取后台的权限数据
 import { fetchPermission } from "../../apis/login"
- 
+import { createRouter } from 'vue-router'
 // 获取前端配置的路由配置  DynameicRoutes 这是根路由
 import router, { DynameicRoutes } from "../../router/index"
 
@@ -15,6 +15,7 @@ export default {
     namespaced: true,
     state: {
         permissionList: null,
+        dynamicRoutes: [],
         sidebarMenu: [],// 导航菜单
         currentMenu: '',// 当前菜单
     },
@@ -22,6 +23,9 @@ export default {
     mutations: {
         //设置权限的功能
         SET_PERMISSION(state, routes) {
+            routes.forEach((item => {
+                router.addRoute(item)
+            }))
             state.permissionList = routes
         },
         //清理权限的功能
@@ -35,6 +39,10 @@ export default {
         //清楚菜单
         CLEAR_MENU(state) {
             state.sidebarMenu = []
+        },
+        // 设置动态的理由列表
+        SET_DYNAICROUTES(state, routes) {
+            state.dynamicRoutes = routes
         }
     },
     actions: {
@@ -53,14 +61,11 @@ export default {
             // 设置默认路由
             setDefaultRouter([MainContainer])
             // 初始化路由
-            let initialRouter = router.options.routes
-
-            console.log('initialRouter', initialRouter)
-            console.log('DynameicRoutes', DynameicRoutes)
-
-            router.addRoute(DynameicRoutes)
-            console.log('router', DynameicRoutes)
-            commit('SET_PERMISSION', [...initialRouter, ...DynameicRoutes])
+            let initialRoutes = router.options.routes
+            console.log('initialRoutes', initialRoutes)
+        
+            // router.addRoutes(DynameicRoutes);
+            commit('SET_PERMISSION', [...initialRoutes, ...DynameicRoutes])
 
 
         }

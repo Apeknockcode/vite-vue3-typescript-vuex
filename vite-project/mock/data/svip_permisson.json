@@ -2,6 +2,26 @@
     "code": 200,
     "message": "登陆成功",
     "data": {
-        "token": "admin"
+        "menu": [
+            {
+                "name": "统计",
+                "children": [
+                    {
+                        "name": "柱状图"
+                    }
+                ]
+            },
+            {
+                "name": "账户",
+                "children": [
+                    {
+                        "name": "管理员"
+                    },
+                    {
+                        "name": "账户信息"
+                    }
+                ]
+            }
+        ]
     }
 }
