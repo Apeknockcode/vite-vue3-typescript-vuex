@@ -1,6 +1,6 @@
 // 权限处理的方式
 import router from './index'
-import store from '@/store/index'
+import store from '../store'
 
 router.beforeEach((to, from, next) => {
     if (!store.state.UserToken) {

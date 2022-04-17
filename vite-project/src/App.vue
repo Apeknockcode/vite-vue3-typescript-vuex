@@ -11,17 +11,9 @@ import {defineComponent, computed} from 'vue'
 import {useRoute} from 'vue-router'
 export default defineComponent({
   setup() {
-    const route = useRoute()
-    const layout = computed(() => {
-      let router = route.meta
-      console.log('router',route)
-    
-      // return 'layout-' + (router?.Layout || 'empty').toLowerCase()
-      return 'layout-default'.toLowerCase()
-    })
-    return {
-      layout,
-    }
+   return{
+     
+   }
   },
 })
 </script>

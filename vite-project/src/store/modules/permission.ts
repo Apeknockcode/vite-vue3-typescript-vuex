@@ -2,14 +2,14 @@
 import { fetchPermission } from "../../apis/login"
 import { createRouter } from 'vue-router'
 // 获取前端配置的路由配置  DynameicRoutes 这是根路由
-import router, { DynameicRoutes } from "../../router/index"
+import router, { DynameicRoutes } from "@/router/index"
 
 
 // 定义好全部的路由
-import dynameicRoutes from "../../router/dynamic-router"
+import dynameicRoutes from "@/router/dynamic-router"
 
 // 引入比对方案
-import { recursionRouter, setDefaultRouter } from '../../utils/recursion-route'
+import { recursionRouter, setDefaultRouter } from '@/utils/recursion-route'
 
 export default {
     namespaced: true,
