@@ -1,4 +1,11 @@
 /*
+ * @name: 
+ * @test: 
+ * @message: 
+ * @param: 
+ * @return: 
+ */
+/*
  * @name:
  * @test:
  * @message:
@@ -15,7 +22,6 @@ import {fetchPermission} from '../../../apis/login'
 import {
   recursionRouter,
   setDefaultRouter,
-  recursionRouterType,
 } from '@/utils/recursion-route'
 const state: IIndexState = {
   userToken: null,
@@ -70,18 +76,17 @@ const login: Module<IIndexState, IGlobalState> = {
       // 根据路由权限进行筛选
       let routes = recursionRouter(permissionList.data.menu, dynameicRoutes)
       console.log('根据路由权限进行筛选 ', routes)
-      let MainContainer = DynameicRoutes.find((v) => v.path === '')
+      
+      let MainContainer = DynameicRoutes.find!((v) => v.path === '')
+
 
       let children = MainContainer?.children || []
       // console.log('获取容器路由下面的children', children)
       children.push(...routes)
       // // 生成 菜单
       commit('SET_MENU', children)
-      // // 设置默认路由
-      // let setDefaultRouterList: Array<recursionRouterType>
-      // setDefaultRouterList = 
-    
-      setDefaultRouter([MainContainer])
+      let container: any= MainContainer!
+      setDefaultRouter(container)
       // // 初始化路由
       let initialRoutes = router.options.routes
       // console.log('initialRoutes', initialRoutes)

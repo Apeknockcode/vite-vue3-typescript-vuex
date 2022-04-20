@@ -1,8 +1,8 @@
+
 // 所有的页面
 
-import {
-  recursionRouterType,
-} from '@/utils/recursion-route'
+
+import { RouteRecordRaw } from 'vue-router'
 const statistics = () => import('../views/statistics/index.vue')
 const histogram = () => import('../views/statistics/histogram.vue')
 const account = () => import('../views/account/index.vue')
@@ -10,7 +10,7 @@ const admin = () => import('../views/account/admin.vue')
 const distribute = () => import('../views/account/distribute.vue')
 const information = () => import('../views/account/information.vue')
 
-const dynameicRoutes: Array<recursionRouterType> = [
+const dynameicRoutes: Array<RouteRecordRaw> = [
   {
     path: '/statistics',
     component: statistics,
@@ -71,4 +71,3 @@ const dynameicRoutes: Array<recursionRouterType> = [
   },
 ]
 export default dynameicRoutes
-

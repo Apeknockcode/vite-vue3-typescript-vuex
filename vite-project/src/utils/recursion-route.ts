@@ -12,25 +12,12 @@
 
 * */
 import {RouteRecordRaw} from 'vue-router'
-export interface recursionRouterType {
-  path: string
-  component: any
-  name: string
-  redirect: {[name: string]: string}
-  meta: {
-    name: string
-    icon: string
-    [propName: string]: any
-  }
-  children: Array<recursionRouterType>
-  [propName: string]: any
-}
 
 export function recursionRouter(
-  router: Array<recursionRouterType>,
-  allRouter: Array<recursionRouterType>
-): Array<recursionRouterType> {
-  let realRouter: Array<recursionRouterType> = []
+  router: Array<RouteRecordRaw>,
+  allRouter: Array<RouteRecordRaw>
+): Array<RouteRecordRaw> {
+  let realRouter: Array<RouteRecordRaw> = []
   allRouter.forEach((v, i) => {
     router.forEach((item, index) => {
       if (item.name == v.meta?.name) {
@@ -46,7 +33,7 @@ export function recursionRouter(
 
 // 制定返回的默认路由
 
-export function setDefaultRouter(routers: Array<recursionRouterType>) {
+export function setDefaultRouter(routers: Array<RouteRecordRaw>) {
   routers.forEach((v, i) => {
     if (v.children && v.children.length > 0) {
       // 指定path

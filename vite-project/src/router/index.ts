@@ -1,6 +1,12 @@
+/*
+ * @name:
+ * @test:
+ * @message:
+ * @param:
+ * @return:
+ */
 
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
-
 
 // 基本配置路由
 const Login = () => import('../views/login.vue')
@@ -13,19 +19,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'login',
-    // redirect: 'login',
     component: Login,
-    // children: [
-    //   {
-    //     path: 'login',
-    //     component: Login,
-    //     name: 'login',
-    //     meta: {
-    //       name: '登陆',
-    //       icon: '',
-    //     },
-    //   },
-    // ],
   },
 ]
 
@@ -37,7 +31,7 @@ const routes: Array<RouteRecordRaw> = [
  *
  * 通过 addRouter() 的方式来动态的添加路由
  * */
-export const DynameicRoutes = [
+export const DynameicRoutes: Array<RouteRecordRaw> = [
   {
     path: '',
     name: 'container',
@@ -77,8 +71,6 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 })
-
-
 
 // 路由拦截
 
