@@ -2,7 +2,7 @@
 
 // const store = useStore()
 
-import {store} from '../store'
+import {store} from '../store_'
 import type {Req, Res} from './types/login'
 import {request} from './request'
 
