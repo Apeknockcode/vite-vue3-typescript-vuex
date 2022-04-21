@@ -1,4 +1,11 @@
 /*
+ * @name: 
+ * @test: 
+ * @message: 
+ * @param: 
+ * @return: 
+ */
+/*
  * @name:
  * @test:
  * @message:
@@ -62,6 +69,10 @@ const login: Module<IIndexState, IGlobalState> = {
     SET_DYNAICROUTES(state: IIndexState, routes) {
       state.dynamicRoutes = routes
     },
+    // 设置 当前菜单
+    SET_CURRENTMENU(state: IIndexState, data) {
+      state.currentMenu=data
+    },
   },
 
   actions: {
@@ -81,7 +92,7 @@ const login: Module<IIndexState, IGlobalState> = {
       children.push(...routes)
       // // 生成 菜单
       commit('SET_MENU', children)
-      let container = MainContainer?[MainContainer]:[]  
+      let container = MainContainer ? [MainContainer] : []
       setDefaultRouter(container)
       // // 初始化路由
       let initialRoutes = router.options.routes
@@ -89,6 +100,8 @@ const login: Module<IIndexState, IGlobalState> = {
 
       // // router.addRoutes(DynameicRoutes);
       commit('SET_PERMISSION', [...initialRoutes, ...DynameicRoutes])
+      // 设置当前菜单
+      commit('SET_CURRENTMENU', children[0])
     },
   },
 }

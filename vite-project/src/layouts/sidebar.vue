@@ -1,10 +1,3 @@
-<!--
- * @name: 
- * @test: 
- * @message: 
- * @param: 
- * @return: 
--->
 <!-- 侧边栏 -->
 <template>
   <a-layout-sider class="sidebar">
@@ -27,17 +20,20 @@
         theme="light"
         :inline-collapsed="collapsed"
       >
-        <template v-for="(v, i) in sidebarMenu" key="'sidebar-' + i">
+        <template v-for="(v, i) in sidebarMenu" key="'sidebar-' + i" @click="gotoRoute(v)">
           <a-sub-menu :key="v.name" v-if="v.children && v.children.length > 0">
-            <template #icon>
-              {{ v.meta.icon }}
+             <template #icon>
+              <PieChartOutlined />
             </template>
             <template #title>{{ v.meta.name }}</template>
-            <a-menu-item v-for="(item, index) in v.children" :key="item.name">
+            <a-menu-item v-for="(item, index) in v.children" :key="item.name" @click="gotoRoute(item)">
+             <template #icon>
+              <PieChartOutlined />
+            </template>
               {{ item.meta.name }}
             </a-menu-item>
           </a-sub-menu>
-          <a-menu-item v-else :key="v.name" :index="v.name">
+          <a-menu-item v-else :key="v.name" :index="v.name" @click="gotoRoute(v)">
             <template #icon>
               <PieChartOutlined />
             </template>
@@ -63,6 +59,12 @@ import {
 
 import {useStore} from 'vuex'
 import {useRouter} from 'vue-router'
+
+interface routerObject {
+  name: string
+  [x:string]:any
+}
+
 export default defineComponent({
   components: {
     MenuFoldOutlined,
@@ -93,18 +95,16 @@ export default defineComponent({
         state.preOpenKeys = oldVal
       }
     )
-    const toggleCollapsed = () => {
-      state.collapsed = !state.collapsed
-      state.openKeys = state.collapsed ? [] : state.preOpenKeys
-    }
-    const gotoRoute = (name: string) => {
-      router.push({name}) // push(path)  push({name:''})
+  
+    const gotoRoute = (v:routerObject) => {
+      //设置 当前的导航菜单
+      store.commit('login/SET_CURRENTMENU',v)
+      router.push(v.name) 
     }
 
     return {
       ...toRefs(state),
       sidebarMenu,
-      toggleCollapsed,
       gotoRoute,
     }
   },
@@ -115,6 +115,9 @@ export default defineComponent({
 .sidebar {
   width: 200px;
   height: 100vh;
+   box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   .title {
     font-size: 20px;
     padding: 10px 20px;

@@ -7407,7 +7407,7 @@ a.ant-btn-sm {
 }
 .ant-menu-sub.ant-menu-inline {
   padding: 0;
-  background: #fafafa;
+  background: transparent;
   border: 0;
   border-radius: 0;
   box-shadow: none;

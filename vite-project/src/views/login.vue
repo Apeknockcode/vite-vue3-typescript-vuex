@@ -3,7 +3,7 @@ import {useRouter, useRoute} from 'vue-router'
 import {defineComponent, reactive, computed, getCurrentInstance} from 'vue'
 import {UserOutlined, LockOutlined} from '@ant-design/icons-vue'
 import { useStore } from 'vuex';
-import { IAxiosResponseData } from '@/store/interface';
+import { IAxiosResponseData } from '../store/interface';
 
 interface FormState {
   username: string

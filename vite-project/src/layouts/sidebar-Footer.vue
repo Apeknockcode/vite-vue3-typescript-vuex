@@ -1,18 +1,19 @@
+
 <!-- 底部菜单 -->
 <template>
-  <div class="sidebarFooter">
-    <a-layout-footer>Footer</a-layout-footer>
-  </div>
+  <a-layout-footer class="sidebarFooter"> 浙ICP备xxxxxxxx号-2 </a-layout-footer>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 .sidebarFooter {
   width: calc(100vw - 200px);
-  height: 50px;
-  background: blueviolet;
+  height: 30px;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
 }
 </style>
