@@ -20363,6 +20363,7 @@ textarea.ant-input-number {
 .ant-layout,
 .ant-layout * {
   box-sizing: border-box;
+  background: transparent;
 }
 .ant-layout.ant-layout-has-sider {
   flex-direction: row;
