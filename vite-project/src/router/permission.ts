@@ -1,10 +1,11 @@
 
 // 权限处理的方式
 import router from './index'
-import store from '../store'
+import  store  from '../store'
 
+console.log(store)
 router.beforeEach((to, from, next) => {
-  if (!store.state.userToken) {
+  if (!store.state.login.userToken) {
     // 未登陆
     if (
       to.matched.length > 0 &&
@@ -20,7 +21,7 @@ router.beforeEach((to, from, next) => {
   } else {
     // 用户已经登陆了 ，则需要判断用户的路由访问权限
     if (!store.state.login.permissionList) {
-      store.dispatch('permission/FETCH_PERMISSION').then(() => {
+      store.dispatch('login/FETCH_PERMISSION').then(() => {
         next({
           path: to.path,
         })

@@ -1,9 +1,9 @@
 /*
- * @name: 
- * @test: 
- * @message: 
- * @param: 
- * @return: 
+ * @name:
+ * @test:
+ * @message:
+ * @param:
+ * @return:
  */
 /*
  * @name:
@@ -19,10 +19,7 @@ import {RouteRecordRaw} from 'vue-router'
 import router, {DynameicRoutes} from '@/router/index'
 import dynameicRoutes from '../../../router/dynamic-router'
 import {fetchPermission} from '../../../apis/login'
-import {
-  recursionRouter,
-  setDefaultRouter,
-} from '@/utils/recursion-route'
+import {recursionRouter, setDefaultRouter} from '@/utils/recursion-route'
 const state: IIndexState = {
   userToken: null,
   permissionList: null,
@@ -76,16 +73,15 @@ const login: Module<IIndexState, IGlobalState> = {
       // 根据路由权限进行筛选
       let routes = recursionRouter(permissionList.data.menu, dynameicRoutes)
       console.log('根据路由权限进行筛选 ', routes)
-      
-      let MainContainer = DynameicRoutes.find!((v) => v.path === '')
 
+      let MainContainer = DynameicRoutes.find!((v) => v.path === '')
 
       let children = MainContainer?.children || []
       // console.log('获取容器路由下面的children', children)
       children.push(...routes)
       // // 生成 菜单
       commit('SET_MENU', children)
-      let container: any= MainContainer!
+      let container = MainContainer?[MainContainer]:[]  
       setDefaultRouter(container)
       // // 初始化路由
       let initialRoutes = router.options.routes

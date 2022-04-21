@@ -2,6 +2,9 @@
 import {useRouter, useRoute} from 'vue-router'
 import {defineComponent, reactive, computed, getCurrentInstance} from 'vue'
 import {UserOutlined, LockOutlined} from '@ant-design/icons-vue'
+import { useStore } from 'vuex';
+import { IAxiosResponseData } from '@/store/interface';
+
 interface FormState {
   username: string
   password: string
@@ -16,6 +19,7 @@ export default defineComponent({
   setup() {
     const vue: any = getCurrentInstance()
     const router = useRouter()
+    const store=useStore()
     const formState = reactive<FormState>({
       username: 'admin',
       password: 'admin',
@@ -24,9 +28,12 @@ export default defineComponent({
     const onFinish = async (values: any) => {
       console.log('Success:', values)
       // 登陆流程proxy
+      console.log(vue.proxy.$http)
 
-      vue.proxy.$http.login.login(values.username).then((res: any) => {
-        vue.proxy.$store.commit('LOGIN_IN', res.data.token)
+      vue.proxy.$http.login.userLogin({user:values.username}).then((res: IAxiosResponseData) => {
+        console.log(res)
+        console.log(store.commit)
+        store.commit('login/SET_USERTOKEN', res.data.token)
         router.push('/home')
       })
     }

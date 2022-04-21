@@ -1,15 +1,21 @@
+/*
+ * @name:
+ * @test:
+ * @message:
+ * @param:
+ * @return:
+ */
 // import service from "./api";
 
 // const store = useStore()
 
-import {store} from '../store_'
 import type {Req, Res} from './types/login'
 import {request} from './request'
 
 // 用户登陆
 export const userLogin = (data: Req) => {
   return request<Req, Res>({
-    url: '/api/permission',
+    url: '/api/login',
     method: 'GET',
     data,
     interceptors: {
@@ -42,7 +48,6 @@ export const fetchPermission = (data: Req) => {
     },
   })
 }
-
 
 // export function fetchPermission() {
 //     return service({
