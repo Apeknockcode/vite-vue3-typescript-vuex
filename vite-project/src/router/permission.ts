@@ -1,11 +1,17 @@
+/*
+ * @name:
+ * @test:
+ * @message:
+ * @param:
+ * @return:
+ */
 
 // 权限处理的方式
 import router from './index'
-import  store  from '../store'
-
-console.log(store)
+import store from '../store'
 router.beforeEach((to, from, next) => {
-  if (!store.state.login.userToken) {
+  if (!store.state.login.userToken && !localStorage.getItem('userToken')) {
+  
     // 未登陆
     if (
       to.matched.length > 0 &&
@@ -19,6 +25,10 @@ router.beforeEach((to, from, next) => {
       })
     }
   } else {
+      store.commit(
+        'login/SET_USERTOKEN',
+        store.state.login.userToken || localStorage.getItem('userToken')
+      )
     // 用户已经登陆了 ，则需要判断用户的路由访问权限
     if (!store.state.login.permissionList) {
       store.dispatch('login/FETCH_PERMISSION').then(() => {
@@ -33,6 +43,5 @@ router.beforeEach((to, from, next) => {
         next(to.fullPath)
       }
     }
-    // next()
   }
 })

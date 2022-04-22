@@ -1,15 +1,22 @@
+/*
+ * @name:
+ * @test:
+ * @message:
+ * @param:
+ * @return:
+ */
 
 // 所有的页面
 
-
-import { RouteRecordRaw } from 'vue-router'
+import {RouteRecordRaw} from 'vue-router'
 const statistics = () => import('../views/statistics/index.vue')
 const histogram = () => import('../views/statistics/histogram.vue')
 const account = () => import('../views/account/index.vue')
 const admin = () => import('../views/account/admin.vue')
 const distribute = () => import('../views/account/distribute.vue')
 const information = () => import('../views/account/information.vue')
-
+const pageListen = () => import('../views/statistics/pageListen.vue')
+const dataStatistics = () => import('../views/statistics/dataStatistics.vue')
 const dynameicRoutes: Array<RouteRecordRaw> = [
   {
     path: '/statistics',
@@ -20,6 +27,24 @@ const dynameicRoutes: Array<RouteRecordRaw> = [
       icon: '',
     },
     children: [
+      {
+        path: '/dataStatistics',
+        component: dataStatistics,
+        name: 'histogram',
+        meta: {
+          name: '数据统计',
+          icon: '',
+        },
+      },
+      {
+        path: '/pageListen',
+        component: pageListen,
+        name: 'histogram',
+        meta: {
+          name: '页面监听',
+          icon: '',
+        },
+      },
       {
         path: '/histogram',
         component: histogram,

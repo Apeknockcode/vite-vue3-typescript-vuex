@@ -1,6 +1,16 @@
-import { createStore } from 'vuex';
+/*
+ * @name:
+ * @test:
+ * @message:
+ * @param:
+ * @return:
+ */
+import {createStore} from 'vuex'
 import login from './modules/Login'
-import {IGlobalState  } from "./interface"
+import {IGlobalState} from './interface'
+
+
+
 
 const store = createStore<IGlobalState>({
   mutations: {},

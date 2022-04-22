@@ -1,9 +1,7 @@
 /**
-
  * 方法一： 比对路由的权限
  * 方法二： 制定返回的默认路由
  * */
-
 /**
  * 比对路由的权限
  * @param {Array}  router  后台返回的路有权限
@@ -17,12 +15,16 @@ export function recursionRouter(
   router: Array<RouteRecordRaw>,
   allRouter: Array<RouteRecordRaw>
 ): Array<RouteRecordRaw> {
-  let realRouter: Array<RouteRecordRaw> = []
+  console.log('allRouter', allRouter)
+  console.log('router', router)
+  let realRouter: Array<RouteRecordRaw>=[]
   allRouter.forEach((v, i) => {
-    router.forEach((item, index) => {
-      if (item.name == v.meta?.name) {
+    router.forEach((item) => {
+      console.log('allRouter', v)
+      console.log('router', item)
+      if (v.meta?.name === item.name) {
         if (item.children && item.children.length > 0) {
-          v.children = recursionRouter(item.children, v?.children || [])
+          v.children = recursionRouter(item.children, v.children )
         }
         realRouter.push(v)
       }

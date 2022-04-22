@@ -5,6 +5,13 @@
  * @param: 
  * @return: 
 -->
+<!--
+ * @name: 
+ * @test: 
+ * @message: 
+ * @param: 
+ * @return: 
+-->
 <!-- 头部 -->
 <!-- 侧边栏 -->
 <template>
@@ -13,7 +20,7 @@
       <div class="headerLeft">
         {{ routes.meta.name }}
       </div>
-       <LogoutOutlined class="loginOut" @click="loginOut" />
+      <LogoutOutlined class="loginOut" @click="loginOut" />
     </a-layout-header>
   </div>
 </template>
@@ -22,12 +29,14 @@
 import {defineComponent, computed} from 'vue'
 import {LogoutOutlined} from '@ant-design/icons-vue'
 import {useStore} from 'vuex'
+import {useRouter} from 'vue-router'
 export default defineComponent({
   components: {
     LogoutOutlined,
   },
   setup() {
     const store = useStore()
+    const router = useRouter()
     const routes = computed(() => {
       {
         return store.state.login.currentMenu
@@ -35,7 +44,8 @@ export default defineComponent({
     })
     //退出登录
     const loginOut = () => {
-      console.log('退出登录')
+      store.commit('login/CLEAR_USERTOKEN')
+      router.push('/login')
     }
     return {
       routes,
