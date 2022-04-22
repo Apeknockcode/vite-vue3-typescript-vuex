@@ -3,16 +3,11 @@
   <a-layout-sider class="sidebar">
     <div class="title">Systerm</div>
     <div class="menu">
-      <!-- 这是收缩菜单栏的按钮 -->
-      <!-- <a-button
-        type="primary"
-        style="margin-bottom: 16px"
-        @click="toggleCollapsed"
-      >
-        <MenuUnfoldOutlined v-if="collapsed" />
-        <MenuFoldOutlined v-else />
-      </a-button> -->
 
+    {{openKeys}}
+    {{selectedKeys}}
+    {{collapsed}}
+    
       <a-menu
         v-model:openKeys="openKeys"
         v-model:selectedKeys="selectedKeys"
@@ -75,23 +70,23 @@ export default defineComponent({
     InboxOutlined,
     AppstoreOutlined,
   },
-  setup() {
+  setup(proxy) {
     const router = useRouter()
     const store = useStore() // 获取vuex 中 state的属性
     let sidebarMenu = computed(() => {
       return store.state.login.sidebarMenu
     }) //获取 vuex 中 导航菜单
-    console.log('sidebarMenu', sidebarMenu)
+
+    console.log('获取当前的路由',router.options.history.state)
     const state = reactive({
-      collapsed: false,
+      collapsed: true,
       selectedKeys: ['home'],
       openKeys: [],
       preOpenKeys: [],
     })
-
+    
     watch(
-      () => state.openKeys,
-      (_val, oldVal) => {
+      () => state.openKeys,(_val, oldVal) => {
         state.preOpenKeys = oldVal
       }
     )

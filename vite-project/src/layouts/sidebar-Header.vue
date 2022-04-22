@@ -42,6 +42,7 @@ export default defineComponent({
         return store.state.login.currentMenu
       }
     })
+   
     //退出登录
     const loginOut = () => {
       store.commit('login/CLEAR_USERTOKEN')

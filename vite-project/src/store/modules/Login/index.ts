@@ -45,7 +45,7 @@ const login: Module<IIndexState, IGlobalState> = {
   },
   mutations: {
     SET_USERTOKEN(state: IIndexState, data: string | null) {
-      debugger
+      
       data ? localStorage.setItem('userToken', data) : ''
       state.userToken = data
     },
@@ -84,7 +84,7 @@ const login: Module<IIndexState, IGlobalState> = {
   actions: {
     async FETCH_PERMISSION({commit, state}) {
       let permissionList: IAxiosResponseData
-      debugger
+
       permissionList = await fetchPermission({
         user: state.userToken,
       })

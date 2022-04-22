@@ -15,13 +15,9 @@ export function recursionRouter(
   router: Array<RouteRecordRaw>,
   allRouter: Array<RouteRecordRaw>
 ): Array<RouteRecordRaw> {
-  console.log('allRouter', allRouter)
-  console.log('router', router)
   let realRouter: Array<RouteRecordRaw>=[]
   allRouter.forEach((v, i) => {
     router.forEach((item) => {
-      console.log('allRouter', v)
-      console.log('router', item)
       if (v.meta?.name === item.name) {
         if (item.children && item.children.length > 0) {
           v.children = recursionRouter(item.children, v.children )

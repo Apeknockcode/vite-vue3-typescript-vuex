@@ -30,7 +30,7 @@ const dynameicRoutes: Array<RouteRecordRaw> = [
       {
         path: '/dataStatistics',
         component: dataStatistics,
-        name: 'histogram',
+        name: 'dataStatistics',
         meta: {
           name: '数据统计',
           icon: '',
@@ -39,7 +39,7 @@ const dynameicRoutes: Array<RouteRecordRaw> = [
       {
         path: '/pageListen',
         component: pageListen,
-        name: 'histogram',
+        name: 'pageListen',
         meta: {
           name: '页面监听',
           icon: '',
