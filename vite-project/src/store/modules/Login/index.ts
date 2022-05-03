@@ -45,7 +45,6 @@ const login: Module<IIndexState, IGlobalState> = {
   },
   mutations: {
     SET_USERTOKEN(state: IIndexState, data: string | null) {
-      
       data ? localStorage.setItem('userToken', data) : ''
       state.userToken = data
     },
@@ -77,6 +76,8 @@ const login: Module<IIndexState, IGlobalState> = {
     },
     // 设置 当前菜单
     SET_CURRENTMENU(state: IIndexState, data) {
+      //缓存 用户点击的页面
+      localStorage.setItem('CacheCurrentPage', JSON.stringify(data))
       state.currentMenu = data
     },
   },
@@ -103,8 +104,13 @@ const login: Module<IIndexState, IGlobalState> = {
       let initialRoutes = router.options.routes
       commit('SET_PERMISSION', [...initialRoutes, ...DynameicRoutes])
       // 设置当前菜单
-      // 获取当前的路由
-      commit('SET_CURRENTMENU', children[0])
+      // 获取当前的路由 
+      commit(
+        'SET_CURRENTMENU',
+        localStorage.getItem('CacheCurrentPage')
+          ? JSON.parse(localStorage.getItem('CacheCurrentPage')||'')
+          : children[0]
+      )
     },
   },
 }

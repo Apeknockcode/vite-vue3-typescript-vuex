@@ -34,6 +34,7 @@ const dynameicRoutes: Array<RouteRecordRaw> = [
         meta: {
           name: '数据统计',
           icon: '',
+          parentPage:'statistics'
         },
       },
       {
@@ -42,7 +43,9 @@ const dynameicRoutes: Array<RouteRecordRaw> = [
         name: 'pageListen',
         meta: {
           name: '页面监听',
+          parentPage:'statistics',
           icon: '',
+
         },
       },
       {
@@ -51,6 +54,7 @@ const dynameicRoutes: Array<RouteRecordRaw> = [
         name: 'histogram',
         meta: {
           name: '柱状图',
+          parentPage:'statistics',
           icon: '',
         },
       },
@@ -71,6 +75,7 @@ const dynameicRoutes: Array<RouteRecordRaw> = [
         name: 'admin',
         meta: {
           name: '管理员',
+          parentPage:'account',
           icon: '',
         },
       },
@@ -80,6 +85,7 @@ const dynameicRoutes: Array<RouteRecordRaw> = [
         name: 'distribute',
         meta: {
           name: '分配列表',
+          parentPage:'account',
           icon: '',
         },
       },
@@ -89,6 +95,7 @@ const dynameicRoutes: Array<RouteRecordRaw> = [
         name: 'information',
         meta: {
           name: '账户信息',
+          parentPage:'account',
           icon: '',
         },
       },

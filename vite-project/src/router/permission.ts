@@ -10,8 +10,8 @@
 import router from './index'
 import store from '../store'
 router.beforeEach((to, from, next) => {
-  if (!store.state.login.userToken && !localStorage.getItem('userToken')) {
   
+  if (!store.state.login.userToken && !localStorage.getItem('userToken')) {
     // 未登陆
     if (
       to.matched.length > 0 &&
@@ -38,6 +38,10 @@ router.beforeEach((to, from, next) => {
       })
     } else {
       if (to.path != '/login') {
+        // 设置菜单的返回的操作对应响应的菜单
+        // console.log('to',to)
+        
+        store.commit('login/SET_CURRENTMENU', to)
         next()
       } else {
         next(to.fullPath)
